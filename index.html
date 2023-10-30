@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="header">
+        <div class="container">
+            <nav>
+                <img src="images/logo.png" class="logo">
+                <ul>
+                    <li><a href="#header">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#certificates">Certificates</a></li>
+                    <li><a href="https://github.com/Mansi-602">Projects</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+            <div class="header">
+        <div class="header-text">
+            <h1>Hi,I am <span>Mansi</span></h1><br>
+            <p>Student at PSIT Kanpur</p>
+        </div>
+        <div class="bg_girl">
+            <img src="images/bg_girl.jpg">
+        </div>
+    </div>
+        </div>
+    </div>
+    <!-- ---------------ABOUT--------------- -->
+    <div id="about">
+        <div class="container">
+            <div class="row">
+                <div class="about-col-1">
+                    <img src="images/user.jpeg" alt="">
+                </div>
+                <div class="about-col-2">
+                    <h1 class="sub-title">About Me</h1><br>
+                    <p>
+                        Hello, My Name is Mansi Shukla. Persuing Btech Computer Science from 
+                        Pranveer Singh Institute Of Technology Kanpur.<br>
+                        I am a student who is ambitious and
+                        quite devoted towards my goal. I believe in the power of hardwork and consistency
+                         and use it as the guiding principle in everything I do.
+                    </p>
+                    <div class="tab-titles">
+                        <p class="tab-links active-link" onclick="opentab('skills')">Skills</p>
+                        <p class="tab-links" onclick="opentab('education')">Education</p>
+                    </div>
+                    <div class="tab-contents active-tab" id="skills">
+                        <ul>
+                            <li><span>HTML and CSS</span><br>Markup Language that defines the structure of the web pages and defining the styles of the html pages</li>
+                            <li><span>Bootstrap</span><br>Front-end development framework for the creation of websites and web apps.</li>
+                            <li><span>Python</span><br>Interpreted, object-oriented, high-level programming language with dynamic semantics</li>
+                            <LI><span>Javascript</span><br>Dynamic programming language that's used for web development, in web applications, for game development.</LI>
+                        </ul>
+                    </div>
+                    <div class="tab-contents" id="education">
+                        <ul>
+                            <li><span>2021-PRESENT</span><br>BTECH Computer Science(Data Science)<br>College:Pranveer Singh Institute Of Technology<br>CGPA(till now):7.31</li>
+                            <li><span>2021-2022</span><br>Class XII: CBSE Board<br>School:Maharana Pratap Education Centre<br>Score:84%</li>
+                            <li><span>2018-2019</span><br>Class X: CBSE Board<br>School:Maharana Pratap Education Centre<br>Score:91%</li>
+                            
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+<!-- ------------------certificates--------------- -->
+<div id="certificates">
+    <div class="container">
+        <h1 class="sub-title">My Certificates</h1>
+        <div class="certificate-list">
+            <div class="certificates">
+                <img src="images/google.png" alt="">
+                <div class="overlay"></div>
+            </div>
+            <div class="certificates">
+                <img src="images/coursera.png" alt="">
+                <div class="overlay"></div>
+            </div>
+            <div class="certificates">
+                <img src="images/micr.png" alt="">
+                <div class="overlay"></div>
+            </div>
+        </div>
+        <a href="certificates.html" class="btn">See More</a>
+    </div>
+</div>
+<!-- -------------------contact------------ -->
+<div id="contact">
+    <div class="container">
+        <div class="row">
+            <div class="contact-left">
+                <h1 class="sub-title">Contact Me</h1>
+                <p><i class="fa-solid fa-paper-plane"></i>30358csdsa@gmail.com</p>
+                <p><i class="fa-solid fa-square-phone"></i>0278947687</p>
+                <div class="social-icons">
+                    <a href=""><i class="fa-brands fa-facebook"></i></a>
+                    <a href=""><i class="fa-brands fa-twitter"></i></a>
+                    <a href=""><i class="fa-brands fa-instagram"></i></a>
+                    <a href=""><i class="fa-brands fa-linkedin"></i></a>
+                </div>
+                <a href="images/Resume_n.pdf" download class="btn btn-2">Download Resume</a>
+            </div>
+            <div class="contact-right">
+                <form name="submit-to-google-sheet">
+                    <input type="text" name="Name" placeholder="Your Name" required>
+                    <input type="email" name="email" placeholder="Your email" required>
+                    <textarea name="Message" rows="6" placeholder="your message"></textarea>
+                    <button type="submit" class="btn btn-2">Submit</button>
+                </form>
+                <span id="msg"></span>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    var tablinks=document.getElementsByClassName("tab-links");
+    var tabcontents=document.getElementsByClassName("tab-contents");
+
+    function opentab(tabname){
+        for(tablink of tablinks){
+            tablink.classList.remove("active-link");
+        }
+        for(tabcontent of tabcontents){
+            tabcontent.classList.remove("active-tab");
+        }
+        event.currentTarget.classList.add("active-link");
+        document.getElementById(tabname).classList.add("active-tab");
+    }
+</script>
+<script>
+    const scriptURL = 'https://script.google.com/macros/s/AKfycbyFjICLkaO7iW8MPfpcRg6t-KlsltMSdD7zF3rC3jtYeJJHC4dAfqB8wF4XWCe0rXKF/exec'
+    const form = document.forms['submit-to-google-sheet']
+    const msg= document.getElementById("msg")
+    form.addEventListener('submit', e => {
+      e.preventDefault()
+      fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+        .then(response => {msg.innerHTML="Message sent successfully"
+          setTimeout(function(){
+            msg.innerHTML=""
+          },5000)
+          form.reset()
+    })
+        .catch(error => console.error('Error!', error.message))
+    })
+  </script>
+
+</body>
+</html>
